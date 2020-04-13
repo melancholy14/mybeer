@@ -16,10 +16,27 @@ html, body, #root {
   width: 50%;
 }
 
-.h-85vh {
-  height: 85vh;
+.h-95vh {
+  height: 95vh;
+}
+
+.h-5vh {
+  height: 5vh;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.ptb-1\/5 {
+  padding-top: 20%;
+  padding-bottom: 20%;
 }
 
 .bg-whitesmoke {
   background-color: whitesmoke;
+}
+
+.bg-lightgrey {
+  background-color: lightgrey;
 }

@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { history } from 'store/configureStore';
 
 import IndexPage from 'containers/IndexPage';
+import Footer from 'components/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Switch>
         <Route path="/" component={IndexPage} />
       </Switch>
+      <Footer />
     </ConnectedRouter>
   );
 }
