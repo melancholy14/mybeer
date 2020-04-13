@@ -5,6 +5,8 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
 
+import searchReducer from 'containers/SearchPage/reducer';
+
 export const history = createBrowserHistory();
 
 export function configureStore() {
@@ -13,6 +15,7 @@ export function configureStore() {
   const store = createStore(
     combineReducers({
       router: connectRouter(history),
+      search: searchReducer,
     }),
     composeWithDevTools(applyMiddleware(...middleware))
   );

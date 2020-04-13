@@ -8,6 +8,10 @@ html, body, #root {
   flex-direction: column;
 }
 
+.flex-items-center {
+  align-items: center;
+}
+
 .w-full {
   width: 100%;
 }
@@ -16,12 +20,20 @@ html, body, #root {
   width: 50%;
 }
 
+.w-4\/5 {
+  width: 80%;
+}
+
 .h-95vh {
   height: 95vh;
 }
 
 .h-5vh {
   height: 5vh;
+}
+
+.h-fit {
+  height: fit-content;
 }
 
 .m-auto {

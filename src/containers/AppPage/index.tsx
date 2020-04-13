@@ -5,14 +5,19 @@ import { ConnectedRouter } from 'connected-react-router';
 import { history } from 'store/configureStore';
 
 import IndexPage from 'containers/IndexPage';
+import SearchPage from 'containers/SearchPage';
+
 import Footer from 'components/Footer';
 
 function App() {
   return (
     <ConnectedRouter history={history}>
-      <Switch>
-        <Route path="/" component={IndexPage} />
-      </Switch>
+      <div className="bg-whitesmoke h-95vh">
+        <Switch>
+          <Route path="/search" exact component={SearchPage} />
+          <Route path="/" component={IndexPage} />
+        </Switch>
+      </div>
       <Footer />
     </ConnectedRouter>
   );
