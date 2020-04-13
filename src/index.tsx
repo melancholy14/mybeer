@@ -2,14 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-import IndexPage from 'containers/IndexPage';
+import AppPage from 'containers/AppPage';
+
+import { Provider } from 'react-redux';
+import { configureStore } from 'store/configureStore';
 
 import 'papercss/dist/paper.min.css';
 import './index.scss';
 
+const store = configureStore();
+
 ReactDOM.render(
   <React.StrictMode>
-    <IndexPage />
+    <Provider store={store}>
+      <AppPage />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
