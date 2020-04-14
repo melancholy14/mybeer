@@ -1,9 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSearch } from 'store/selectors';
 import { loadFacets } from './thunks';
+import SelectFacet from './SelectFacet';
 
 function SearchPage() {
+  const [style, setStyle] = useState<string>('');
+  const [brewery, setBrewery] = useState<string>('');
+  const [country, setCountry] = useState<string>('');
+  const [category, setCategory] = useState<string>('');
+
   const { facets } = useSelector(selectSearch);
   const dispatch = useDispatch();
 
@@ -11,7 +17,8 @@ function SearchPage() {
     dispatch(loadFacets());
   }, [dispatch]);
 
-  const { breweries, countries, styles, categories } = facets || {};
+  const { breweries = [], countries = [], styles = [], categories = [] } =
+    facets || {};
 
   return (
     <>
@@ -23,50 +30,30 @@ function SearchPage() {
             Search
           </button>
         </div>
-        <div className="col-3 padding-small">
-          <label htmlFor="style">Style</label>
-          <select id="style" className="w-4/5">
-            {styles &&
-              styles.map(({ value, name, count }) => (
-                <option key={value} value={value}>
-                  {name}({count})
-                </option>
-              ))}
-          </select>
-        </div>
-        <div className="col-3 padding-small">
-          <label htmlFor="category">Category</label>
-          <select id="category" className="w-4/5">
-            {categories &&
-              categories.map(({ value, name, count }) => (
-                <option key={value} value={value}>
-                  {name}({count})
-                </option>
-              ))}
-          </select>
-        </div>
-        <div className="col-3 padding-small">
-          <label htmlFor="brewery">Brewery</label>
-          <select id="brewery" className="w-4/5">
-            {breweries &&
-              breweries.map(({ value, name, count }) => (
-                <option key={value} value={value}>
-                  {name}({count})
-                </option>
-              ))}
-          </select>
-        </div>
-        <div className="col-3 padding-small">
-          <label htmlFor="country">Country</label>
-          <select id="country" className="w-4/5">
-            {countries &&
-              countries.map(({ value, name, count }) => (
-                <option key={value} value={value}>
-                  {name}({count})
-                </option>
-              ))}
-          </select>
-        </div>
+        <SelectFacet
+          label="Style"
+          value={style}
+          data={styles}
+          onUpdate={setStyle}
+        />
+        <SelectFacet
+          label="Brewery"
+          value={brewery}
+          data={breweries}
+          onUpdate={setBrewery}
+        />
+        <SelectFacet
+          label="Country"
+          value={country}
+          data={countries}
+          onUpdate={setCountry}
+        />
+        <SelectFacet
+          label="Category"
+          value={category}
+          data={categories}
+          onUpdate={setCategory}
+        />
       </form>
     </>
   );

@@ -32,6 +32,10 @@ html, body, #root {
   height: 5vh;
 }
 
+.h-20rem {
+  height: 20rem;
+}
+
 .h-fit {
   height: fit-content;
 }
@@ -51,4 +55,16 @@ html, body, #root {
 
 .bg-lightgrey {
   background-color: lightgrey;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
 }
