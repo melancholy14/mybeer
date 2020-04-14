@@ -16,9 +16,9 @@ export const loadFacets = (): ThunkActionType => async (dispatch) => {
   dispatch(loadFacetsRequest());
 
   try {
-    const { facets } = await request(
-      'catalog/datasets/open-beer-database/facets'
-    );
+    const { facets } = await request({
+      url: 'catalog/datasets/open-beer-database/facets',
+    });
 
     const results = facets.reduce(
       (
