@@ -42,21 +42,17 @@ function SelectFacet({ label, value, data, onUpdate }: Props) {
   };
 
   return (
-    <div className="col-3 padding-small position-relative">
+    <div className="col-lg-3 form-control px-2">
       <label htmlFor="style">{label}</label>
       <input type="text" value={value} className="w-full" onChange={onChange} />
       {searchResult.length > 0 && (
-        <div className="position-absolute w-full border border-primary h-20rem overflow-auto">
+        <ul className="menu">
           {searchResult.map(({ value: searchValue, name }) => (
-            <div
-              key={searchValue}
-              className="padding-small"
-              onClick={onSelect(searchValue)}
-            >
-              {name}
-            </div>
+            <li key={searchValue} onClick={onSelect(searchValue)}>
+              <a>{name}</a>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

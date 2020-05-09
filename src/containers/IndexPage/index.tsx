@@ -10,27 +10,20 @@ function IndexPage() {
   };
 
   return (
-    <div className="w-1/2 m-auto ptb-1/5">
-      <div className="row flex-center">
-        <h1>MyBeer</h1>
+    <header className="background">
+      <h1 className="title">MyBeer</h1>
+      <p className="p-4" />
+      <div className="form-control w-1/2">
+        <input type="text" placeholder="Your favourite beer?" />
       </div>
-      <div className="row flex-center">
-        <div className="form-group row flex-edges w-full">
-          <input
-            type="text"
-            className="col-9 col"
-            placeholder="Your favourite beer?"
-          />
-          <button
-            type="button"
-            className="btn-primary col-2 col"
-            onClick={onSearch}
-          >
-            Search
-          </button>
-        </div>
-      </div>
-    </div>
+      <button
+        type="button"
+        className="button button-primary button-large"
+        onClick={onSearch}
+      >
+        Search
+      </button>
+    </header>
   );
 }
 

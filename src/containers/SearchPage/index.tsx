@@ -21,15 +21,8 @@ function SearchPage() {
     facets || {};
 
   return (
-    <>
-      <form className="row padding-large flex-egdes">
-        <h2 className="col-2 m-auto">MyBeer</h2>
-        <div className="row flex-edges flex-items-center col-9">
-          <input type="text" className="h-fit col-9" />
-          <button type="submit" className="btn-primary col-2">
-            Search
-          </button>
-        </div>
+    <form className="">
+      <div className="row">
         <SelectFacet
           label="Style"
           value={style}
@@ -54,8 +47,8 @@ function SearchPage() {
           data={categories}
           onUpdate={setCategory}
         />
-      </form>
-    </>
+      </div>
+    </form>
   );
 }
 
