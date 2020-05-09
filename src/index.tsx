@@ -7,7 +7,7 @@ import AppPage from 'containers/AppPage';
 import { Provider } from 'react-redux';
 import { configureStore } from 'store/configureStore';
 
-import 'papercss/dist/paper.min.css';
+import 'mustard-ui/dist/css/mustard-ui.min.css';
 import './index.scss';
 
 const store = configureStore();
