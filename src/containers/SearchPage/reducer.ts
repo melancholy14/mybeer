@@ -1,3 +1,5 @@
+import update from 'immutability-helper';
+
 import { SearchState, SearchActionTypes } from './types';
 import { LOAD_FACETS_SUCCESS, LOAD_FACETS_FAILURE } from './actions';
 
@@ -14,15 +16,13 @@ export default function searchReducer(
 
   switch (type) {
     case LOAD_FACETS_SUCCESS:
-      return {
-        ...state,
-        facets: payload?.facets,
-      };
+      return update(state, {
+        facets: { $set: payload?.facets },
+      });
     case LOAD_FACETS_FAILURE:
-      return {
-        ...state,
-        error: payload?.error,
-      };
+      return update(state, {
+        error: { $set: payload?.error },
+      });
     default:
       return state;
   }
