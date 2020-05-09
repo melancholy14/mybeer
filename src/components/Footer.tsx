@@ -5,7 +5,11 @@ function Footer() {
     <footer>
       <div className="footer-text footer-links">
         <p>
-          Made with <span role="img">🌭</span> by{' '}
+          Made with{' '}
+          <span role="img" aria-label="hotdog">
+            🌭
+          </span>{' '}
+          by{' '}
           <a href="https://github.com/melancholy14/mybeer/issues">
             Melancholy14
           </a>

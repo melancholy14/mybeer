@@ -16,7 +16,7 @@ function SelectFacet({ label, value, data, onUpdate }: Props) {
     if (data) {
       setSearchResult(data);
     }
-  }, []);
+  }, [data]);
 
   const filter = (items: Facet[], value: string) =>
     items.filter(({ name }) =>
@@ -46,7 +46,7 @@ function SelectFacet({ label, value, data, onUpdate }: Props) {
       <label htmlFor="style">{label}</label>
       <input type="text" value={value} className="w-full" onChange={onChange} />
       {searchResult.length > 0 && (
-        <ul className="menu">
+        <ul className="menu w-full">
           {searchResult.map(({ value: searchValue, name }) => (
             <li key={searchValue} onClick={onSelect(searchValue)}>
               <a>{name}</a>
