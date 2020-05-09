@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 
 import { history } from 'store/configureStore';
@@ -7,18 +7,55 @@ import { history } from 'store/configureStore';
 import IndexPage from 'containers/IndexPage';
 import SearchPage from 'containers/SearchPage';
 
-import Footer from 'components/Footer';
+import { Header, Footer } from 'components';
+
+type LayoutRouterType = {
+  component: React.ComponentType<RouteComponentProps>;
+  path: string;
+  exact?: boolean;
+};
 
 function App() {
+  const HeaderLayoutRouter = ({
+    component: Component,
+    ...props
+  }: LayoutRouterType) => (
+    <Route
+      {...props}
+      render={(matchProps) => (
+        <>
+          <Header />
+          <div className="background">
+            <div className="container">
+              <Component {...matchProps} />
+            </div>
+          </div>
+        </>
+      )}
+    />
+  );
+
+  const FooterLayoutRouter = ({
+    component: Component,
+    ...props
+  }: LayoutRouterType) => (
+    <Route
+      {...props}
+      render={(matchProps) => (
+        <>
+          <Component {...matchProps} />
+          <Footer />
+        </>
+      )}
+    />
+  );
+
   return (
     <ConnectedRouter history={history}>
-      <div className="bg-whitesmoke h-95vh">
-        <Switch>
-          <Route path="/search" exact component={SearchPage} />
-          <Route path="/" component={IndexPage} />
-        </Switch>
-      </div>
-      <Footer />
+      <Switch>
+        <HeaderLayoutRouter path="/search" exact component={SearchPage} />
+        <FooterLayoutRouter path="/" component={IndexPage} />
+      </Switch>
     </ConnectedRouter>
   );
 }
