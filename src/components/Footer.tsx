@@ -10,11 +10,19 @@ function Footer() {
             🌭
           </span>{' '}
           by{' '}
-          <a href="https://github.com/melancholy14/mybeer/issues">
+          <a
+            href="https://github.com/melancholy14/mybeer/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Melancholy14
           </a>
           . Licensed under the MIT License. Referenced by{' '}
-          <a href="https://data.opendatasoft.com/explore/dataset/open-beer-database%40public-us/information">
+          <a
+            href="https://data.opendatasoft.com/explore/dataset/open-beer-database%40public-us/information"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             https://data.opendatasoft.com/explore/dataset/open-beer-database%40public-us/information
           </a>
         </p>

@@ -1,4 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
 
-export { Header, Footer };
+import Tabs from './Tabs';
+
+export { Header, Footer, Tabs };
