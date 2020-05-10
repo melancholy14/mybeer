@@ -16,7 +16,8 @@ function Tabs({ data, active, onSelect }: TabsProps) {
       {data.map(({ text, id }) => (
         <li
           key={id}
-          className={`tab ${id === active ? 'active' : ''}`}
+          className={`tab align-center ${id === active ? 'active' : ''}`}
+          style={{ width: `${100 / data.length}%` }}
           onClick={onClick(id)}
         >
           <span>{text}</span>
