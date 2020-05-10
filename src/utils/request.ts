@@ -9,7 +9,7 @@ type Headers = {};
 type Params = {};
 
 type Request = {
-  url: string;
+  url?: string;
   method?: Method;
   headers?: Headers;
   params?: Params;
