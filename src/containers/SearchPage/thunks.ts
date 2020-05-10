@@ -1,16 +1,15 @@
-import { ThunkAction } from 'redux-thunk';
-import { Action } from 'redux';
-
 import request from 'utils/request';
+import { ThunkActionType } from 'store/types';
 
-import { SearchState, Facets, Facet } from './types';
+import { Facets, Facet } from './types';
 import {
   loadFacetsRequest,
   loadFacetsSuccess,
   loadFacetsFailure,
+  loadSearchRequest,
+  loadSearchFailure,
+  loadSearchSuccess,
 } from './actions';
-
-type ThunkActionType = ThunkAction<void, SearchState, unknown, Action<string>>;
 
 export const loadFacets = (): ThunkActionType => async (dispatch) => {
   dispatch(loadFacetsRequest());
@@ -49,5 +48,32 @@ export const loadFacets = (): ThunkActionType => async (dispatch) => {
     dispatch(loadFacetsSuccess(results));
   } catch (error) {
     dispatch(loadFacetsFailure(error.message));
+  }
+};
+
+export const search = (keyword: string): ThunkActionType => async (
+  dispatch
+) => {
+  dispatch(loadSearchRequest());
+
+  try {
+    const response = await request({
+      requestType: 'search',
+      params: { q: keyword },
+    });
+
+    const records = response.records.map(({ fields }: { fields: any }) => ({
+      ...fields,
+      breweryId: fields.brewery_id,
+      breweryName: fields.name_breweries,
+      catName: fields.cat_name,
+      catId: fields.cat_id,
+      styleName: fields.style_name,
+      styleId: fields.style_id,
+    }));
+
+    dispatch(loadSearchSuccess(records));
+  } catch (error) {
+    dispatch(loadSearchFailure(error.message));
   }
 };
